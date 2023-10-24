@@ -1,4 +1,4 @@
-package section1.functioninterface;
+package section1.functioninterface.previoussource;
 
 @FunctionalInterface
 public interface RunDefault {

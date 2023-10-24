@@ -1,4 +1,4 @@
-package section1.functioninterface;
+package section1.functioninterface.previoussource;
 
 import java.util.function.Function;
 

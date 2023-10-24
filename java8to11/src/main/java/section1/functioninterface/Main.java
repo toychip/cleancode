@@ -10,42 +10,44 @@ public class Main {
     // 생성한 클래스를 실행하는 메인 메서드
     public static void main(String[] args) {
 
-        List<String> name = new ArrayList<>();
-        name.add("toychip");
-        name.add("junjun");
-        name.add("ofo");
-        name.add("abcdefg");
-        name.add("가"); // 한글은 가장 순서가 늦음
+        List<OnlineClass> springClasses = new ArrayList<>();
+        springClasses.add(new OnlineClass(1, "spring boot", true));
+        springClasses.add(new OnlineClass(2, "spring data jpa", true));
+        springClasses.add(new OnlineClass(3, "spring mvc", false));
+        springClasses.add(new OnlineClass(4, "spring core", false));
+        springClasses.add(new OnlineClass(5, "rest api development", false));
 
-        /**
-         * stream API는 연속된 data를 처리하는 operation들의 모임이다.
-         * stream은 data가 아님. 컬렉션이 data를 갖고 있고 stream은 이를 source로 사용
-         * stream으로 처리하는 데이터는 오직 한번만 처리한다.
-         * stream은 크게 2가지로 나눌 수 있다.
-         * 중개 operator, 터미널 operator
-         * 중개 operator은 근본적으로 lazy하다. 중개 operator은 stream을 return한다.
-         * 중개 operator은 treminal이 오기 전까지 실행을 하지 않는다.
-         * 중개 operator은 종료 operator가 오지 않는다면 무의미하다!
-         * 종료 operator은 Stream을 리턴하지 않는다.
-         */
+        List<OnlineClass> javaClasses = new ArrayList<>();
+        javaClasses.add(new OnlineClass(6, "The Java, Test", true));
+        javaClasses.add(new OnlineClass(7, "The Java, Code manipulation", true));
+        javaClasses.add(new OnlineClass(8, "The Java, 8 to 11", false));
 
-        // stream은 또다른 stream이 됨
-        Stream<String> stringStream = name.stream().map(String::toUpperCase);
+        List<List<OnlineClass>> keesunEvents = new ArrayList<>();
+        keesunEvents.add(springClasses);
+        keesunEvents.add(javaClasses);
 
-        // 중개 operator은 treminal이 오기 전까지 실행을 하지 않는다. !!!
-        name.stream().map((s) -> {
-            System.out.println(s);  // 출력 되지 않음
-            return s.toUpperCase();
-        });
+        System.out.println("spring 으로 시작하는 수업");
+        // TODO
 
-        // name은 변하지 안았으므로 기존의 값과 같음
-        name.forEach(System.out::println);
+        System.out.println("close 되지 않은 수업");
+        // TODO
 
-        System.out.println("------------------");
-        // 병렬 처리하는 방법 다른 쓰레드를 생성하여 거기서 실행
-        // 데이터가 정말 방대한 경우 병렬 처리하는 것이 이득
-        List<String> collect = name.parallelStream().map(String::toUpperCase).collect(Collectors.toList());
-        collect.forEach(System.out::println);
+        System.out.println("수업 이름만 모아서 스트림 만들기");
+        // TODO
+
+
+
+        System.out.println("두 수업 목록에 들어있는 모든 수업 아이디 출력");
+        // TODO
+
+        System.out.println("10부터 1씩 증가하는 무제한 스트림 중에서 앞에 10개 빼고 최대 10개 까지만");
+        // TODO
+
+        System.out.println("자바 수업 중에 Test가 들어있는 수업이 있는지 확인");
+        // TODO
+
+        System.out.println("스프링 수업 중에 제목에 spring이 들어간 것만 모아서 List로 만들기");
+        // TODO
     }
 }
 

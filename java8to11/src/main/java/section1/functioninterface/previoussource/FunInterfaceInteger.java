@@ -1,4 +1,4 @@
-package section1.functioninterface;
+package section1.functioninterface.previoussource;
 
 public class FunInterfaceInteger {
     public static void main(String[] args) {
