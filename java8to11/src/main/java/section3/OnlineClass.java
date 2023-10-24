@@ -1,4 +1,4 @@
-package section1.functioninterface;
+package section3;
 
 public class OnlineClass {
 
