@@ -1,4 +1,4 @@
-package section1.functioninterface.previoussource;
+package section12;
 
 public class FunInterfaceDefault {
 
