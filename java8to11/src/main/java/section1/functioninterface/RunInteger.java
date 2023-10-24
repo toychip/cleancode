@@ -1,4 +1,4 @@
-package functioninterface;
+package section1.functioninterface;
 
 @FunctionalInterface
 public interface RunInteger {

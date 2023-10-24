@@ -1,4 +1,4 @@
-package functioninterface;
+package section1.functioninterface;
 
 public class FunInterfaceDefault {
 
