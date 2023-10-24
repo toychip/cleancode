@@ -1,10 +1,8 @@
 package section1.functioninterface;
 
-import java.util.function.BinaryOperator;
-import java.util.function.Consumer;
+import java.util.Arrays;
+import java.util.Comparator;
 import java.util.function.Function;
-import java.util.function.IntConsumer;
-import java.util.function.Predicate;
 import java.util.function.Supplier;
 import java.util.function.UnaryOperator;
 
@@ -13,42 +11,37 @@ public class Main {
     // 생성한 클래스를 실행하는 메인 메서드
     public static void main(String[] args) {
 
-        Main main = new Main();
-        main.run();
+        UnaryOperator<String> hi = (s) -> "hi " + s;
+        UnaryOperator<String> staticMethodReference = Greeting::hi;
+        // static method 참조하는 UnaryOperator가 만들어짐
+
+        String kyoung = hi.apply("kyoung");
+        String junhyoung = staticMethodReference.apply("junhyoung");
+        // 참조하는 UnaryOperator가 이때 만들어져 사용하는 것
+
+        System.out.println("kyoung = " + kyoung);
+        System.out.println("junhyoung = " + junhyoung);
+
+        // 생성자 참조하는 법
+        Greeting greeting = new Greeting();
+        UnaryOperator<String> instanceMethodReference = greeting::hello; // instance method 참조
+
+        // 인자가 있는 생성자 참조하는 법
+        Supplier<Greeting> newGreeting = Greeting::new; // 야기까지는 생성자로 객체를 생성하는 것이 아님
+        Greeting greeting2 = newGreeting.get(); // 이때 생성하는 것
+
+        // name을 인자로 받는 생성자를 사용
+        Function<String, Greeting> junHyoungGreeting = Greeting::new;
+        String name = junHyoungGreeting.apply("준형").getName();
+        System.out.println("name = " + name);
+
+        // 임의 객체의 인스턴스 메소드 참조
+        String[] names = {"toychip", "junHyoung", "toa"};
+        // Comparator란 0을 return하면 같고, 양수이면 앞 인자가 크다는 것이고 음수면 뒤 인자가 크다는 것이다.
+        // Comparetor와 Arrays.sort(뒷인자) 를 조합해서 사용한 것
+        // Arrays.sort(names, (o1, o2) -> 0); 위와 아래가 같은 것
+        Arrays.sort(names, String::compareToIgnoreCase);
+        System.out.println(Arrays.toString(names));
     }
 
-    private void run() {
-        // java 8부터는 해당 변수가 '사실상' final인 경우 생략이 가능하다.
-        int baseNumber = 10;
-        // baseNumber++; -> 메서드들에서 오류가 남
-
-        // 로컬 클래스
-        class LocalClass{
-            void printBaseNumber() {
-                // 로컬 클래스 내부에 있는 baseNumber가 바깥에 있는 baseNumber를 가린다.
-                int baseNumber = 20;
-                System.out.println("LocalClass.printBaseNumber = " + baseNumber);   // 20이 찍힘
-            }
-        }
-
-        // 익명 클래스
-        Consumer<Integer> integerConsumer = new Consumer<Integer>() {
-
-            int baseNumber = 500;   // 익명 클래스 내부에 있는 baseNumber가 바깥에 있는 baseNumber를 가린다.
-            @Override
-            public void accept(Integer baseNumber) {    // 클래스에 있는 baseNumber가 아닌, 매개변수로 baseNumber를 사용함
-                System.out.println(baseNumber);
-            }
-        };
-
-
-        // 람다
-        // 위 2개의 클래스와의 차이점은, 쉐도잉이 가능하지 않다. 위와같이 변수를 가릴 수 없다.
-        // 처음 int baseNumber 선언한 곳과 같은 스코프이기 때문이다.
-        IntConsumer consumer = (i) -> {
-            System.out.println(i + baseNumber);
-        };
-
-        consumer.accept(10000);
-    }
 }
