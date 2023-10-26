@@ -6,7 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-public class Main {
+public class StreamMain {
 
     // 생성한 클래스를 실행하는 메인 메서드
     public static void main(String[] args) {

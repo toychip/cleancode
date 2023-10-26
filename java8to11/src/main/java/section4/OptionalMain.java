@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Main {
+public class OptionalMain {
 
     // 생성한 클래스를 실행하는 메인 메서드
     public static void main(String[] args) {
@@ -72,7 +72,7 @@ public class Main {
         /**
          * 값이 없다면 메서드 실행, 현재 없는 상태
          */
-        jpaOptional.orElseGet(Main::createNewSpringClasses);
+        jpaOptional.orElseGet(OptionalMain::createNewSpringClasses);
 
         /**
          * 값을 생성하는 것이 아닌, 만들어줄 수 없는 상황이거나 예외를 터뜨리고 싶다면 아래와 같이 설정
