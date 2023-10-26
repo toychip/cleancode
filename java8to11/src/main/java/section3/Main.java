@@ -49,6 +49,14 @@ public class Main {
                 .flatMap(list -> list.stream())     // Stream<OnlineClass>
                 .forEach(oc -> System.out.println(oc.getId()));
 
+        /**
+         * stream이 제공하는 flatMap과 Optional의 flatMap은 다른 것임
+         * stream에서 쓰는 map은 1대1 매핑이다. result도 하나이다.
+         * 하지만 stream의 flatmap은 1개의 인풋이 여러개의 아웃풋으로 나누는 것과 같은 것임.
+         */
+
+
+
         System.out.println("10부터 1씩 증가하는 무제한 스트림 중에서 앞에 10개 빼고 최대 10개 까지만");
 
         Stream.iterate(10, i -> i + 1)      // 여기까지 무제한 데이터로 하는 스트림
