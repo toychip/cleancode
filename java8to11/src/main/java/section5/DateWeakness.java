@@ -1,20 +1,17 @@
 package section5;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
-import java.util.GregorianCalendar;
 
-public class DateMain {
+public class DateWeakness {
 
     public static void main(String[] args) throws InterruptedException {
 
         /**
-         * TimeStamp 와 같음.
+         * TimeStamp 와 같음
          * 작명이 잘 되어있지 않음. 날짜에서 시간을 갖고 올 수 있음
          */
         Date date = new Date();
-        long time = date.getTime(); // 1970. 01. 01
+        long time = date.getTime(); // 1970. 01. 01, 기계용 시간
 
         // 3초가 지난 시간 생성
         Thread.sleep(1000 * 3);
