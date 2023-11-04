@@ -1,6 +1,6 @@
 package Section6;
 
-public class Cocurrent {
+public class CocurrentThread1 {
     public static void main(String[] args) {
 
 //        System.out.println("나는 main Thread");
